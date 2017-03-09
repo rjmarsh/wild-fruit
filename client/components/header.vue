@@ -6,18 +6,18 @@
 		<div class="wild_fruit_status">
 			<div v-if="loggedIn" class="FamilySearch_login">
 				<div class="FamilySearch_show_login">
-					<div @click="logout" class="FamilySearch_show_logout">
+					<a href="/auth/signout" class="FamilySearch_show_logout">
 						logout
-					</div>
+					</a>
 					<div class="FamilySearch_username">
 						{{username}}
 					</div>
 				</div>
 			</div>
 			<div v-else>
-				<div @click="login" class="FamilySearch_show_login">
+				<a href="/auth/signin" class="FamilySearch_show_login">
 					login
-				</div>
+				</a>
 			</div>
 			<div class="FamilySearch_logo">
 				<img class="fsicon" src="/static/img/icons/FamilySearch Logo/FSMosaicTreeLogo.png"/>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-	import fsClient from '../familysearch/familysearch-client';
 
 	export default {
 		name: 'wf-header',
@@ -37,7 +36,7 @@
 				username: '',
 			};
 		},
-		created() {
+/*		created() {
 			fsClient.getUser().then(function(user) {
 				this.username = user.username;
 			}).catch(function(error) {
@@ -45,19 +44,20 @@
 			});
 		},
 		methods: {
+		    setusername(username) {
+		      this.username = username;
+			},
 			logout() {
 				this.loggedIn = false;
 				this.username
 				fsClient.logout();
-				debugger; // will we ever get here?
 			},
 			login() {
 				this.loggedIn = true;
 				this.username = fsClient.getUser();
 				fsClient.login();
-				debugger; // will we ever get here?
 			}
-		},
+		}, */
 	};
 </script>
 

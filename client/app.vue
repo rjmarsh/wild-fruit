@@ -16,6 +16,7 @@
 	import wfNavigate from './components/navigation';
 	import wfFooter from './components/footer';
 
+
 	export default {
 		name: 'app',
 		data() {
@@ -27,6 +28,10 @@
 			wfHeader,
 			wfNavigate,
 			wfFooter,
+		},
+		methods: {
+			verifyFamilySearchLogin() {
+			}
 		},
 	};
 </script>

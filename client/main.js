@@ -5,8 +5,12 @@ import Main from './views/main';
 import Create from './views/create';
 import Manage from './views/manage';
 import Learn from './views/learn';
+//import cookiesUtil from './cookies';
 
 Vue.use(VueRouter);
+
+//const accessToken = getCookie('fsaccesstoken');
+//cookiesUtil.removeItem('FSaccesstoken');
 
 const routes = [
 	{
@@ -46,3 +50,4 @@ new Vue({
 		return {};
 	},
 });
+
