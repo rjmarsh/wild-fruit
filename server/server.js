@@ -27,7 +27,8 @@ var sess_options = {
 server
 	.use(session({
       store: new FileStore(sess_options),
-      secret: 'keyboard cat'
+      secret: 'keyboard cat',
+      cookie: { secure: false }
 	}))
 // api
 	.use(bodyParser.urlencoded({ extended: true }))

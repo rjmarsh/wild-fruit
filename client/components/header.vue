@@ -36,28 +36,6 @@
 				username: '',
 			};
 		},
-/*		created() {
-			fsClient.getUser().then(function(user) {
-				this.username = user.username;
-			}).catch(function(error) {
-				console.log(error);
-			});
-		},
-		methods: {
-		    setusername(username) {
-		      this.username = username;
-			},
-			logout() {
-				this.loggedIn = false;
-				this.username
-				fsClient.logout();
-			},
-			login() {
-				this.loggedIn = true;
-				this.username = fsClient.getUser();
-				fsClient.login();
-			}
-		}, */
 	};
 </script>
 

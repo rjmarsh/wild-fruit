@@ -9,26 +9,17 @@ router.use(fsClient);
 
 router.get('/', function(req, res, next) {
 
-  console.log(req.fs);
+	req.fs.oauthToken(req.query.code, function (error, tokenResponse) {
 
-  req.fs.oauthToken(req.query.code, function(error, tokenResponse){
+      if (error || tokenResponse.statusCode >= 400) {
+        return next(error);
+      }
 
-    if(error || tokenResponse.statusCode >= 400){
-      return next(error);
-    }
-
-    const getUsername = req.fs.getCurrentUser().then(function(response) {
-	  var username = response.getUser().getContactName();
-      console.log(username);
-      return username;
-	});
-
-//	cookiesUtil('fsaccesstoken', tokenResponse.data.access_token, 24*60*60);
-
-	getUsername.then(function(username) {
-		res.redirect('/');
-	}).catch(next);
-  });
+      req.session.fs_token = tokenResponse.data.access_token;
+      req.session.save(function(){
+        res.redirect('/');
+      });
+    });
 });
 
 module.exports = router;
