@@ -5,8 +5,8 @@
 		</div>
 		<div class="wild_fruit_status">
 			<div v-if="loggedIn" class="FamilySearch_login">
-				<div class="FamilySearch_show_login">
-					<a href="/auth/signout" class="FamilySearch_show_logout">
+				<div>
+					<a href="/auth/signout" class="FamilySearch_show_log">
 						logout
 					</a>
 					<div class="FamilySearch_username">
@@ -14,8 +14,8 @@
 					</div>
 				</div>
 			</div>
-			<div v-else>
-				<a href="/auth/signin" class="FamilySearch_show_login">
+			<div v-else class="FamilySearch_login">
+				<a href="/auth/signin" class="FamilySearch_show_log">
 					login
 				</a>
 			</div>
@@ -69,29 +69,17 @@
 		flex: 3;
 	}
 
-
 	.FamilySearch_login {
 		display: flex;
 		height: 50%;
 	}
 
-	.FamilySearch_username {
-		flex: 1;
-		order: 1;
-		flex-basis: 85%;
-		text-align: right;
+	.FamilySearch_show_log {
 		font-size: 14px;
+		color: #ffffff;
 		font-family: "Georgia";
-	}
-
-	.FamilySearch_login_logout {
-		flex: 1;
-		order: 2;
-		flex-basis: 15%;
-		text-align: right;
-		padding-right: 5px;
-		font-size: 14px;
-		font-family: "Georgia";
+		padding-right: 15px;
+		margin-left: auto;
 	}
 
 	.FamilySearch_logo {

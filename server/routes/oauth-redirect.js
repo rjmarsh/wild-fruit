@@ -9,6 +9,8 @@ router.use(fsClient);
 
 router.get('/', function(req, res, next) {
 
+	console.log('/auth/oauth-redirect');
+
 	req.fs.oauthToken(req.query.code, function (error, tokenResponse) {
 
       if (error || tokenResponse.statusCode >= 400) {

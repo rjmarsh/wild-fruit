@@ -33,9 +33,10 @@ server
 // api
 	.use(bodyParser.urlencoded({ extended: true }))
 	.use(bodyParser.json())
+	.use('/auth/check-signin', require('./routes/check-signin'))
+	.use('/auth/oauth-redirect', require('./routes/oauth-redirect'))
 	.use('/auth/signin', require('./routes/signin'))
 	.use('/auth/signout', require('./routes/signout'))
-	.use('/auth/oauth-redirect', require('./routes/oauth-redirect'))
 	// static assets
 	.use('/', express.static('./static'))
 	.use('/static', express.static('./static'))

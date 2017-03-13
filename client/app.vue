@@ -21,7 +21,7 @@
 		name: 'app',
 		data() {
 			return {
-
+				username: ''
 			};
 		},
 		components: {
@@ -29,9 +29,16 @@
 			wfNavigate,
 			wfFooter,
 		},
-		methods: {
-			verifyFamilySearchLogin() {
-			}
+		created: function () {
+			console.log("--------------------------------------------------------\napp.created\n--------------------------------------------------------");
+			this.$http.get('/auth/check-signin').then(response => {
+				console.log('Success');
+				console.log(response.body);
+				this.username = response.body;
+			}, response => {
+				console.log('Error');
+				console.log('Request to \'check-signin\' failed:  ' + response);
+			});
 		},
 	};
 </script>

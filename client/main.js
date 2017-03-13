@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import App from './app';
 import Main from './views/main';
 import Create from './views/create';
@@ -8,6 +9,7 @@ import Learn from './views/learn';
 //import cookiesUtil from './cookies';
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 //const accessToken = getCookie('fsaccesstoken');
 //cookiesUtil.removeItem('FSaccesstoken');

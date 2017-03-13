@@ -8,6 +8,8 @@ router.use(fsClient);
 // Start FS sign in by forwarding the user to the OAuth sign in page.
 router.get('/', function(req, res, next) {
 
+	console.log('/auth/signin');
+
   // oauthRedirectURL() returns the URL that the user should be redirected to
   // on familysearch.org for starting OAuth. The proper query params will be
   // set for the app key (client id) and the redirect uri.
