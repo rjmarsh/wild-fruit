@@ -88,6 +88,7 @@
 	.no_right_margin {
 		margin-left: auto;
 	}
+
 	.FamilySearch_logo {
 		display: flex;
 		height: 50%;

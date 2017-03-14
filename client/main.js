@@ -44,19 +44,6 @@ const router = new VueRouter({
 	routes,
 });
 
-
-router.beforeEach ((to, from, next) => {
-	console.log('\n\nbeforeEach:');
-	console.log('-------------------------');
-	console.log(to);
-	console.log('-------------------------');
-	console.log(from);
-	console.log('-------------------------');
-	console.log(next);
-	console.log('-------------------------');
-	next();
-})
-
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',

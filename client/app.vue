@@ -33,7 +33,6 @@
 				this.username = response.body;
 			}, response => {
 				this.username = '';
-				console.log('Error');
 				console.log('Request to \'check-signin\' failed:  ' + response);
 			});
 		},

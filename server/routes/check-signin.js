@@ -1,5 +1,6 @@
 import express from 'express';
 import fsClient from '../middleware/fs-client';
+
 var router = express.Router();
 
 // Setup the FS sdk client before handling any requests on this router.
@@ -8,8 +9,6 @@ router.use(fsClient);
 // On sign out we just destroy the session and forward to the home page.
 // We don't try to invalidate the FS access token.
 router.get('/', function(req, res, next) {
-
-	console.log('/auth/check-signin');
 
 	new Promise((resolve, reject) => {
 		if(req.session.user) {

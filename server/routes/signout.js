@@ -1,4 +1,5 @@
 import express from 'express';
+
 var router = express.Router();
 
 // On sign out we just destroy the session and forward to the home page.
