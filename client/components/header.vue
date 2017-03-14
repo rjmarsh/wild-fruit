@@ -4,15 +4,13 @@
 			<img class="olive_tree" src="/static/img/olive_tree.png"/><span class="header_text">Wild Fruit</span>
 		</div>
 		<div class="wild_fruit_status">
-			<div v-if="loggedIn" class="FamilySearch_login">
-				<div>
+			<div v-if="username.length > 0" class="FamilySearch_login">
+				<span class="no_right_margin">
+					<span class="FamilySearch_username">{{username}}</span>
 					<a href="/auth/signout" class="FamilySearch_show_log">
 						logout
 					</a>
-					<div class="FamilySearch_username">
-						{{username}}
-					</div>
-				</div>
+				</span>
 			</div>
 			<div v-else class="FamilySearch_login">
 				<a href="/auth/signin" class="FamilySearch_show_log">
@@ -31,11 +29,9 @@
 	export default {
 		name: 'wf-header',
 		data() {
-			return {
-				loggedIn: false,
-				username: '',
-			};
+			return {};
 		},
+		props: ['username'],
 	};
 </script>
 
@@ -74,6 +70,13 @@
 		height: 50%;
 	}
 
+	.FamilySearch_username {
+		font-size: 14px;
+		color: #ffffff;
+		font-family: "Georgia";
+		margin-left: auto;
+	}
+
 	.FamilySearch_show_log {
 		font-size: 14px;
 		color: #ffffff;
@@ -82,6 +85,9 @@
 		margin-left: auto;
 	}
 
+	.no_right_margin {
+		margin-left: auto;
+	}
 	.FamilySearch_logo {
 		display: flex;
 		height: 50%;

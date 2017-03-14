@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div id="outer_wrapper">
-			<wf-header></wf-header>
+			<wf-header :username="username"></wf-header>
 			<wf-navigate></wf-navigate>
 			<div id="main_content">
 				<router-view></router-view>
@@ -16,7 +16,6 @@
 	import wfNavigate from './components/navigation';
 	import wfFooter from './components/footer';
 
-
 	export default {
 		name: 'app',
 		data() {
@@ -30,12 +29,10 @@
 			wfFooter,
 		},
 		created: function () {
-			console.log("--------------------------------------------------------\napp.created\n--------------------------------------------------------");
 			this.$http.get('/auth/check-signin').then(response => {
-				console.log('Success');
-				console.log(response.body);
 				this.username = response.body;
 			}, response => {
+				this.username = '';
 				console.log('Error');
 				console.log('Request to \'check-signin\' failed:  ' + response);
 			});
