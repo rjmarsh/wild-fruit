@@ -8,7 +8,6 @@
 	import wfCreate from '../components/create-workflow';
 
 	export default {
-		name: 'Create',
 		data() {
 			return {};
 		},
