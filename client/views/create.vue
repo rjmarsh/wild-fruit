@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<wf-create></wf-create>
+		<wf-create :showModal=true></wf-create>
 	</div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
 	<div class="create-workflow">
-		<button id="show-modal" @click="showModal = true">Show Modal</button>
 		<wf-modal :show="showModal" :on-close="closeModal">
 			<span slot="content">
 				<span class="cw-title">Create a New Workflow</span>
@@ -15,10 +14,9 @@
 	export default {
 		name: 'wf-create-workflow',
 		data() {
-			return {
-				showModal: false,
-			};
+			return {};
 		},
+		props: ['showModal'],
 		components: {
 			wfModal,
 		},
