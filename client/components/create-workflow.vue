@@ -8,25 +8,25 @@
 						<label>New Workflow Name</label>
 						<input class="input-control" placeholder="Descendancy of Splendora Fritella"/>
 						<label>Root Person</label>
-						<input class="input-control" pattern="" placeholder="L2DE-A1Z"/>
+						<input class="input-control" pattern="^[a-zA-Z0-9-]*$" placeholder="L2DE-A1Z"/>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="row">
-						<input type="radio" id="pickUp" value="Up" v-model="upDown">
-						<label for="pickUp">Ascending</label>
-						<input type="radio" id="pickDown" value="Down" v-model="upDown">
-						<label for="pickDown">Descending</label>
+						<input type="radio" id="pickAscending" value="Ascending" v-model="direction">
+						<label for="pickAscending">Ancestry</label>
+						<input type="radio" id="pickDescending" value="Descending" v-model="direction">
+						<label for="pickDescending">Descendants</label>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="row">
-						<input type="radio" id="pickDirect" value="Direct" v-model="directPicked">
-						<label for="pickDirect">Direct Line</label>
-						<input type="radio" id="pickPlus" value="Plus" v-model="directPicked">
-						<label for="pickPlus">Direct Line and Immediate Families</label>
+						<input type="radio" id="directOnly" value="No" v-model="includeFamily">
+						<label for="directOnly">Direct Line</label>
+						<input type="radio" id="directPlusImmediate" value="Yes" v-model="includeFamily">
+						<label for="directPlusImmediate">Direct Line and Immediate Families</label>
 					</div>
 				</div>
 
@@ -40,8 +40,8 @@
 				<div class="form-group">
 					<div class="column">
 						<label>&nbsp;</label>
-						<button>Save</button>
-						<button>Cancel</button>
+						<button v-on:click="saveNewWorkflow">Save</button>
+						<button v-on:click="closeModal">Cancel</button>
 					</div>
 				</div>
 			</span>
@@ -57,8 +57,9 @@
 		data() {
 			return {
 				workflowName: '',
-				upDown: 'Up',
-				directPicked: 'Direct',
+				direction: 'Ascending',
+				includeFamily: 'No',
+				generations: 4,
 			};
 		},
 		props: ['showModal'],
@@ -69,9 +70,8 @@
 			closeModal() {
 				this.showModal = false;
 			},
-			changeLang(lang) {
-				this.$changeLanguage(lang);
-				this.closeModal();
+			saveNewWorkflow() {
+				console.log('saveNewWorkflow');
 			}
 		},
 	};
@@ -92,7 +92,7 @@
 	}
 
 	.create-workflow * {
-		opacity: 0.8;
+		opacity: 1;
 	}
 
 	.create-workflow:hover * {
