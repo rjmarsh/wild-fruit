@@ -103,6 +103,8 @@
 	.form-title {
 		text-align: center;
 		padding-bottom: 20px;
+		font-weight: bold;
+		font-size: 1em;
 	}
 
 	.form-group {
