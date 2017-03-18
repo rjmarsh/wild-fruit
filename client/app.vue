@@ -4,7 +4,7 @@
 			<wf-header :username="username"></wf-header>
 			<wf-navigate></wf-navigate>
 			<div id="main_content">
-				<router-view></router-view>
+				<router-view :workflows="workflows"></router-view>
 			</div>
 			<wf-footer></wf-footer>
 		</div>
@@ -20,7 +20,8 @@
 		name: 'app',
 		data() {
 			return {
-				username: ''
+				username: '',
+				workflows: new Map()
 			};
 		},
 		components: {

@@ -6,9 +6,9 @@
 				<div class="form-group">
 					<div class="column">
 						<label>New Workflow Name</label>
-						<input class="input-control" placeholder="Descendancy of Splendora Fritella"/>
+						<input class="input-control" placeholder="Descendancy of Splendora Fritella" v-model="workflowName"/>
 						<label>Root Person</label>
-						<input class="input-control" pattern="^[a-zA-Z0-9-]*$" placeholder="L2DE-A1Z"/>
+						<input class="input-control" placeholder="L2DE-A1Z" v-model="rootPerson"/>
 					</div>
 				</div>
 
@@ -33,7 +33,7 @@
 				<div class="form-group">
 					<div class="row">
 						<label>Generations</label>
-						<input class="input-control" placeholder="4"/>
+						<input type="number" class="input-control" placeholder="8" v-model="generations"/>
 					</div>
 				</div>
 
@@ -54,15 +54,17 @@
 
 	export default {
 		name: 'wf-create-workflow',
+		props: ['showModalProp', 'workflows'],
 		data() {
 			return {
+				showModal: this.showModalProp,
+				rootPerson: '',
 				workflowName: '',
 				direction: 'Ascending',
 				includeFamily: 'No',
-				generations: 4,
+				generations: 8,
 			};
 		},
-		props: ['showModal'],
 		components: {
 			wfModal,
 		},
@@ -71,7 +73,19 @@
 				this.showModal = false;
 			},
 			saveNewWorkflow() {
-				console.log('saveNewWorkflow');
+				if (!this.rootPerson.match(/^[a-zA-Z0-9-]*$/)) {
+					return false;
+				}
+				this.workflows.set(this.rootPerson, {
+					workflowName: this.workflowName,
+					direction: this.direction,
+					includeFamily: this.includeFamily,
+					generations: this.generations,
+					lastModified: '0'
+				})
+				for (const [key, value] of this.workflows) {
+					console.log(key + ' = ' + value['workflowName'] + ', ' + value['direction'] + ', ' + value['includeFamily'] + ', ' + value['generations']);
+				}
 			}
 		},
 	};
