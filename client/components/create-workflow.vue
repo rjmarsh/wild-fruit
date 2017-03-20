@@ -51,10 +51,11 @@
 
 <script>
 	import wfModal from './modal';
+	import store from './../store/store';
 
 	export default {
 		name: 'wf-create-workflow',
-		props: ['showModalProp', 'workflows'],
+		props: ['showModalProp'],
 		data() {
 			return {
 				showModal: this.showModalProp,
@@ -70,22 +71,17 @@
 		},
 		methods: {
 			closeModal() {
-				this.showModal = false;
+//				this.showModal = false;
+
+				store.getters.getWorkflow('aaaa-bbb');
 			},
 			saveNewWorkflow() {
-				if (!this.rootPerson.match(/^[a-zA-Z0-9-]*$/)) {
-					return false;
-				}
-				this.workflows.set(this.rootPerson, {
+				store.commit('addWorkflow', {
+					rootPerson: this.rootPerson,
 					workflowName: this.workflowName,
 					direction: this.direction,
 					includeFamily: this.includeFamily,
-					generations: this.generations,
-					lastModified: '0'
-				})
-				for (const [key, value] of this.workflows) {
-					console.log(key + ' = ' + value['workflowName'] + ', ' + value['direction'] + ', ' + value['includeFamily'] + ', ' + value['generations']);
-				}
+					generations: this.generations});
 			}
 		},
 	};

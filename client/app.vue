@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<div id="outer_wrapper">
-			<wf-header :username="username"></wf-header>
+			<wf-header></wf-header>
 			<wf-navigate></wf-navigate>
 			<div id="main_content">
-				<router-view :workflows="workflows"></router-view>
+				<router-view></router-view>
 			</div>
 			<wf-footer></wf-footer>
 		</div>
@@ -20,8 +20,6 @@
 		name: 'app',
 		data() {
 			return {
-				username: '',
-				workflows: new Map()
 			};
 		},
 		components: {

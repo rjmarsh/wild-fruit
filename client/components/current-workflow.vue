@@ -1,7 +1,7 @@
 <template>
 	<div class="body">
  		<div>Current</div>
-  	</div>>
+  	</div>
 </template>
 
 <script>
