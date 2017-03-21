@@ -33,7 +33,7 @@
 		},
 		computed: {
 			username: function() {
-				return this.$store.state.username;
+				return this.$store.familysearch.state.username;
 			}
 		}
 	};

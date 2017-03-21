@@ -29,9 +29,9 @@
 		},
 		created: function () {
 			this.$http.get('/auth/check-signin').then(response => {
-				this.$store.commit('setUsername', response.body);
+				this.$store.familysearch.commit('setUsername', response.body);
 			}, response => {
-				this.$store.commit('setUsername', '');
+				this.$store.familysearch.commit('setUsername', '');
 				console.log('Request to \'check-signin\' failed:  ' + response);
 			});
 		},

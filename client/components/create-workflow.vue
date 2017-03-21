@@ -81,7 +81,9 @@
 				this.showModal = false;
 			},
 			saveNewWorkflow() {
-				this.$store.commit('addWorkflow', {
+				console.log('--- saveNewWorkflow ----------------------------------');
+				console.log(this.$store);
+				this.$store.workflows.commit('addWorkflow', {
 					name: this.workflowName,
 					rootPerson: this.rootPerson,
 					direction: this.direction,
@@ -90,7 +92,7 @@
 					lastModified: Date.now()
 				});
 				if (this.currentWorkflow) {
-					this.$store.commit('setAsCurrentWorkflow', this.workflowName);
+					this.$store.workflows.commit('setAsCurrentWorkflow', this.workflowName);
 				}
 			}
 		},
