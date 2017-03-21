@@ -4,7 +4,7 @@ import VueResource from 'vue-resource';
 import Vuex from 'vuex';
 import store from './store/store';
 import App from './app';
-import Main from './views/main';
+import Current from './views/current';
 import Create from './views/create';
 import Manage from './views/manage';
 import Learn from './views/learn';
@@ -13,6 +13,13 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(Vuex);
 
+store.subscribe((mutation, state) => {
+	console.log('--- state change ---------------------------------');
+	console.log(state);
+	console.log(mutation.type)
+	console.log(mutation.payload)
+})
+
 const routes = [
 	{
 		path: '/',
@@ -20,7 +27,7 @@ const routes = [
 		children: [
 			{
 				path: '/',
-				component: Main,
+				component: Current,
 			},
 			{
 				path: '/create-workflow',

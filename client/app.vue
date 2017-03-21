@@ -29,9 +29,9 @@
 		},
 		created: function () {
 			this.$http.get('/auth/check-signin').then(response => {
-				this.username = response.body;
+				this.$store.commit('setUsername', response.body);
 			}, response => {
-				this.username = '';
+				this.$store.commit('setUsername', '');
 				console.log('Request to \'check-signin\' failed:  ' + response);
 			});
 		},

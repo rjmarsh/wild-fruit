@@ -38,6 +38,13 @@
 				</div>
 
 				<div class="form-group">
+					<div class="row">
+						<input type="checkbox" name="currentWorkflow" id="currentWorkflow" v-model="currentWorkflow">
+						<label for="currentWorkflow"> Set as Current Workflow</label>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<div class="column">
 						<label>&nbsp;</label>
 						<button v-on:click="saveNewWorkflow">Save</button>
@@ -51,7 +58,6 @@
 
 <script>
 	import wfModal from './modal';
-	import store from './../store/store';
 
 	export default {
 		name: 'wf-create-workflow',
@@ -64,6 +70,7 @@
 				direction: 'Ascending',
 				includeFamily: 'No',
 				generations: 8,
+				currentWorkflow: true
 			};
 		},
 		components: {
@@ -71,17 +78,20 @@
 		},
 		methods: {
 			closeModal() {
-//				this.showModal = false;
-
-				store.getters.getWorkflow('aaaa-bbb');
+				this.showModal = false;
 			},
 			saveNewWorkflow() {
-				store.commit('addWorkflow', {
+				this.$store.commit('addWorkflow', {
+					name: this.workflowName,
 					rootPerson: this.rootPerson,
-					workflowName: this.workflowName,
 					direction: this.direction,
 					includeFamily: this.includeFamily,
-					generations: this.generations});
+					generations: this.generations,
+					lastModified: Date.now()
+				});
+				if (this.currentWorkflow) {
+					this.$store.commit('setAsCurrentWorkflow', this.workflowName);
+				}
 			}
 		},
 	};

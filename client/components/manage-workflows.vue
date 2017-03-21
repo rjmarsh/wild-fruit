@@ -1,6 +1,10 @@
 <template>
 	<div class="body">
- 		<div>Manage</div>
+		<ul id="workflow-list">
+			<li v-for="workflow in workflows">
+				{{ workflow.name + ':' + workflow.rootPerson + ', ' + workflow.direction + ', ' + workflow.includeFamily + ', ' + workflow.generations + ', ' + workflow.lastModified }}
+			</li>
+		</ul>
   	</div>
 </template>
 
@@ -10,6 +14,11 @@
 		data() {
 			return {};
 		},
+		computed: {
+			workflows: function() {
+				return this.$store.state.workflows;
+			}
+		}
 	};
 </script>
 

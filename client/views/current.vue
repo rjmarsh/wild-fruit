@@ -8,7 +8,7 @@
 	import wfCurrent from '../components/current-workflow';
 
 	export default {
-		name: 'main',
+		name: 'Current',
 		data() {
 			return {};
 		},

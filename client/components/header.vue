@@ -31,7 +31,11 @@
 		data() {
 			return {};
 		},
-		props: ['username'],
+		computed: {
+			username: function() {
+				return this.$store.state.username;
+			}
+		}
 	};
 </script>
 

@@ -6,28 +6,49 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		username: '',
-		workflows: []
+		workflows: [],
+		currentWorkflow: -1
 	},
 	getters: {
-		getWorkflows: (state, getters) => (person) => {
+		getWorkflowByName: state => (workflowName) => {
+			state.workflows.forEach(function(item) {
+				if (item.name === workflowName) {
+					return item;
+				}
+			});
+			return {};
 		},
-		getWorkflow: (state, getters) => (workflowName) => {
-			console.log('--- state ----------------------------------');
-			console.log(state);
-			console.log('--- getters --------------------------------');
-			console.log(getters);
-			console.log('--- person ---------------------------------');
-			console.log(person);
-			console.log('--------------------------------------------');
-//			return state.workflows.prototype.get(person);
+		getCurrentWorkflow: state => {
+			if (state.currentWorkflow !== -1) {
+				return state.workflows[currentWorkflow];
+			}
+			return {};
 		},
 	},
 	mutations: {
-		setUsername(username) {
-			this.state.username = username;
+		setUsername(state, username) {
+			state.username = username;
 		},
 		addWorkflow(state, workflow) {
 			state.workflows.push(workflow);
 		},
-	}
+		removeWorkflow(state, workflowName) {
+			state.workflows.forEach(function(item, index) {
+				if (item.name === workflowName) {
+					if (index === state.currentWorkflow) {
+						state.currentWorkflow = -1;
+					}
+					state.workflows.splice(index, 1); // remove the element from the array
+				}
+			});
+		},
+		setAsCurrentWorkflow(state, workflowName) {
+			state.workflows.forEach(function(item, index) {
+				if (item.name === workflowName) {
+					state.currentWorkflow = index;
+				}
+			});
+		}
+	},
+	strict: true // In strict mode, whenever Vuex state is mutated outside of mutation handlers, an error will be thrown.
 })

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<wf-create :showModalProp=true :workflows="workflows"></wf-create>
+		<wf-create :showModalProp=true></wf-create>
 	</div>
 </template>
 
@@ -8,7 +8,7 @@
 	import wfCreate from '../components/create-workflow';
 
 	export default {
-		props: ['workflows'],
+		name: 'Create',
 		data() {
 			return {};
 		},

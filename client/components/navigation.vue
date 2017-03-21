@@ -1,9 +1,9 @@
 <template>
 	<div class="nav_container">
-		<div class="nav_link"><a href="\">Current Workflow</a></div>
-		<div class="nav_link"><a href="\create-workflow">Create a New Workflow</a></div>
-		<div class="nav_link"><a href="\manage-workflows">Manage Workflows</a></div>
-		<div class="nav_link"><a href="\learn">Learn</a></div>
+		<div class="nav_link"><router-link to="/">Current Workflow</router-link></div>
+		<div class="nav_link"><router-link to="/create-workflow">Create a New Workflow</router-link></div>
+		<div class="nav_link"><router-link to="/manage-workflows">Manage Workflows</router-link></div>
+		<div class="nav_link"><router-link to="/learn">Learn</router-link></div>
 	</div>
 </template>
 
