@@ -16,7 +16,7 @@
 		},
 		computed: {
 			workflows: function() {
-				return this.$store.workflows.state.workflows;
+				return this.$store.state.workflows.workflows;
 			}
 		}
 	};

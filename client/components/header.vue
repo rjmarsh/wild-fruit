@@ -33,7 +33,9 @@
 		},
 		computed: {
 			username: function() {
-				return this.$store.familysearch.state.username;
+				console.log('--- computed username -------------------------------');
+				console.log(this.$store);
+				return this.$store.state.familysearch.username;
 			}
 		}
 	};

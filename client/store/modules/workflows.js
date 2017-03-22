@@ -22,9 +22,6 @@ const getters = {
 };
 
 const mutations = {
-	setUsername(state, username) {
-		state.username = username;
-	},
 	addWorkflow(state, workflow) {
 		state.workflows.push(workflow);
 	},
@@ -39,6 +36,9 @@ const mutations = {
 		});
 	},
 	setAsCurrentWorkflow(state, workflowName) {
+		console.log('--- setAsCurrentWorkflow -----------------------');
+		console.log(state);
+		console.log(workflowName);
 		state.workflows.forEach(function(item, index) {
 			if (item.name === workflowName) {
 				state.currentWorkflow = index;
