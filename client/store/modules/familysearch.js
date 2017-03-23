@@ -14,6 +14,14 @@ const state = {
 };
 
 const mutations = {
+	login(state, info) {
+		state.username = info.username;
+		state.accessToken = info.accessToken;
+	},
+	logout(state) {
+		state.username = '';
+		state.accessToken = '';
+	},
 	setUsername(state, username) {
 		state.username = username;
 	},

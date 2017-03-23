@@ -4,18 +4,20 @@
 			<img class="olive_tree" src="/static/img/olive_tree.png"/><span class="header_text">Wild Fruit</span>
 		</div>
 		<div class="wild_fruit_status">
-			<div v-if="username.length > 0" class="FamilySearch_login">
-				<span class="no_right_margin">
-					<span class="FamilySearch_username">{{username}}</span>
-					<a href="/auth/signout" class="FamilySearch_show_log">
+			<div v-if="username.length" class="FamilySearch_login">
+				<div class="FamilySearch_show_login">
+					<div @click="logout" class="FamilySearch_show_logout">
 						logout
-					</a>
-				</span>
+					</div>
+					<div class="FamilySearch_username">
+						{{username}}
+					</div>
+				</div>
 			</div>
-			<div v-else class="FamilySearch_login">
-				<a href="/auth/signin" class="FamilySearch_show_log">
+			<div v-else>
+				<div @click="login" class="FamilySearch_show_login">
 					login
-				</a>
+				</div>
 			</div>
 			<div class="FamilySearch_logo">
 				<img class="fsicon" src="/static/img/icons/FamilySearch Logo/FSMosaicTreeLogo.png"/>
@@ -33,11 +35,25 @@
 		},
 		computed: {
 			username: function() {
-				console.log('--- computed username -------------------------------');
-				console.log(this.$store);
 				return this.$store.state.familysearch.username;
 			}
-		}
+		},
+		created() {
+			fsClient.getUser().then(function(user) {
+				this.username = user.username;
+			}).catch(function(error) {
+				console.log(error);
+			});
+		},
+		methods: {
+			login() {
+				this.username = fsClient.getUser();
+				fsClient.login();
+			},
+			logout() {
+				fsClient.logout();
+			},
+		},
 	};
 </script>
 
