@@ -1,9 +1,6 @@
 import express from 'express';
 import { port } from './config';
 import bodyParser from 'body-parser';
-import session from 'express-session';
-
-const FileStore = require('session-file-store')(session);
 
 const server = express();
 
@@ -17,20 +14,7 @@ const errHandler = (err, req, res, next) => { // eslint-disable-line no-unused-v
   });
 };
 
-var sess_options = {
-	path: "./sessions/",  //directory where session files will be stored
-	useAsync: true,
-	reapInterval: 5000,
-	maxAge: 10000
-};
-
 server
-	.use(session({
-      store: new FileStore(sess_options),
-      secret: 'keyboard cat',
-      cookie: { secure: false }
-	}))
-// api
 	.use(bodyParser.urlencoded({ extended: true }))
 	.use(bodyParser.json())
 	// static assets

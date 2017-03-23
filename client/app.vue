@@ -27,16 +27,6 @@
 			wfNavigate,
 			wfFooter,
 		},
-		created: function () {
-			console.log('--- app load -----------------------------');
-			console.log(this.$store);
-			this.$http.get('/auth/check-signin').then(response => {
-				this.$store.commit('setUsername', response.body);
-			}, response => {
-				this.$store.commit('setUsername', '');
-				console.log('Request to \'check-signin\' failed:  ' + response);
-			});
-		},
 	};
 </script>
 

@@ -1,6 +1,15 @@
 import cookiesUtil from './cookies';
 import FamilySearch from 'fs-js-lite';
 
+const fsClient = new FamilySearch({
+	environment: FSenvironment,
+	appKey: FSappkey,
+	redirectUri: document.location.protocol + '//' + document.location.host + '/',
+	saveAccessToken: true,
+	tokenCookie: 'FS_AUTH_TOKEN',
+	maxThrottledRetries: 10,
+});
+
 
 export default {
 	getClient() {

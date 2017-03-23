@@ -1,33 +1,28 @@
-import FamilySearch from 'fs-js-lite';
-import {FSenvironment, FSappkey} from './config';
 
 const state = {
-	username: '',	// for display in the header.vue
+	username: '',	// to be displayed in the header.vue
 	accessToken: '',
-	client: new FamilySearch({
-		environment: FSenvironment,
-		appKey: FSappkey,
-		redirectUri: document.location.protocol + '//' + document.location.host + '/',
-//		redirectUri: document.location.protocol + '//' + document.location.host + '/familysearch/authentication-redirect-end',
- 		saveAccessToken: true
-	}),
+};
+
+const getters = {
+	username: state => state.username,
+	accessToken: state => state.accessToken,
+	client: state => state.client,
 };
 
 const mutations = {
-	login(state, info) {
+	setLoginCredentials(state, info) {
 		state.username = info.username;
 		state.accessToken = info.accessToken;
 	},
-	logout(state) {
+	clearLoginCredentials(state) {
 		state.username = '';
 		state.accessToken = '';
-	},
-	setUsername(state, username) {
-		state.username = username;
 	},
 };
 
 export default {
 	state,
-	mutations
+	getters,
+	mutations,
 };
