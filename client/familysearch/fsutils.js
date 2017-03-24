@@ -1,5 +1,6 @@
 import cookiesUtil from './cookies';
 import FamilySearch from 'fs-js-lite';
+import { FSenvironment, FSappkey } from './config';
 
 const fsClient = new FamilySearch({
 	environment: FSenvironment,
@@ -42,8 +43,10 @@ export default {
 	},
 	// Function is called when the user clicks the "Sign In" button.
 	login() {
+		console.log('--- login ---------------------------------------');
+		console.log(fsClient);
 		// Redirect the user to the FamilySearch OAuth page
-		this.$store.state.familysearch.fsClient.oauthRedirect();
+//		fsClient.oauthRedirect();
 		// we don't return here
 	},
 	logout() {

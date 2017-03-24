@@ -5,8 +5,8 @@
 		</div>
 		<div class="wild_fruit_status">
 			<div v-if="username.length" class="FamilySearch_login">
-				<div class="FamilySearch_show_login">
-					<div @click="logout" class="FamilySearch_show_logout">
+				<div class="no_right_margin">
+					<div @click="logout" class="FamilySearch_show_log">
 						logout
 					</div>
 					<div class="FamilySearch_username">
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div v-else>
-				<div @click="login" class="FamilySearch_show_login">
+				<div @click="login" class="FamilySearch_show_log">
 					login
 				</div>
 			</div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+	import fsUtils from './../familysearch/fsutils';
 
 	export default {
 		name: 'wf-header',
@@ -38,20 +39,19 @@
 				return this.$store.state.familysearch.username;
 			}
 		},
-		created() {
+/*		created() {
 			fsClient.getUser().then(function(user) {
 				this.username = user.username;
 			}).catch(function(error) {
 				console.log(error);
 			});
-		},
+		}, */
 		methods: {
 			login() {
-				this.username = fsClient.getUser();
-				fsClient.login();
+				fsUtils.login();
 			},
 			logout() {
-				fsClient.logout();
+				fsUtils.logout();
 			},
 		},
 	};
