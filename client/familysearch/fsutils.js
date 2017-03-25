@@ -2,7 +2,7 @@ import cookiesUtil from './cookies';
 import FamilySearch from 'fs-js-lite';
 import { FSenvironment, FSappkey } from './config';
 
-const fsClient = new FamilySearch({
+const client = new FamilySearch({
 	environment: FSenvironment,
 	appKey: FSappkey,
 	redirectUri: document.location.protocol + '//' + document.location.host + '/',
@@ -13,9 +13,6 @@ const fsClient = new FamilySearch({
 
 
 export default {
-	getClient() {
-		return fsClient;
-	},
 	getUser() {
 		// In this next section we are populating the username in the header.
 		// First we check if the username is stored in a cookie. If we are logged in
@@ -28,11 +25,11 @@ export default {
 					username: cookiesUtil.getItem('username'),
 				});
 			}
-			if(!fsClient.hasAccessToken()){
+			if(!client.hasAccessToken()){
 				return reject("Username not found")
 			}
 
-			return fsClient.getCurrentUser().then(function(response){
+			return client.getCurrentUser().then(function(response){
 				const username = response.getUser().getContactName();
 				cookiesUtil.setItem('username', username, 86400);
 				return {
@@ -43,14 +40,12 @@ export default {
 	},
 	// Function is called when the user clicks the "Sign In" button.
 	login() {
-		console.log('--- login ---------------------------------------');
-		console.log(fsClient);
 		// Redirect the user to the FamilySearch OAuth page
-//		fsClient.oauthRedirect();
+		client.oauthRedirect();
 		// we don't return here
 	},
 	logout() {
 		// clear cookie here
-		fsClient.deleteAccessToken();
+		client.deleteAccessToken();
 	},
 };

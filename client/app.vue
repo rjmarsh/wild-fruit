@@ -27,6 +27,9 @@
 			wfNavigate,
 			wfFooter,
 		},
+		created: function() {
+			this.$store.dispatch('checkFamilySearchLoginStatus');
+		}
 	};
 </script>
 
