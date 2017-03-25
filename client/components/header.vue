@@ -5,16 +5,16 @@
 		</div>
 		<div class="wild_fruit_status">
 			<div v-if="username.length" class="FamilySearch_login">
-				<div class="no_right_margin">
-					<div @click="logout" class="FamilySearch_show_log">
-						logout
-					</div>
-					<div class="FamilySearch_username">
+				<span class="no_right_margin">
+					<span class="FamilySearch_username">
 						{{username}}
-					</div>
-				</div>
+					</span>
+					<span @click="logout" class="FamilySearch_show_log">
+						logout
+					</span>
+				</span>
 			</div>
-			<div v-else>
+			<div v-else class="FamilySearch_login">
 				<div @click="login" class="FamilySearch_show_log">
 					login
 				</div>
