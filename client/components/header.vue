@@ -27,7 +27,6 @@
 </template>
 
 <script>
-	import fsUtils from './../familysearch/fsutils';
 
 	export default {
 		name: 'wf-header',
@@ -39,19 +38,12 @@
 				return this.$store.state.familysearch.username;
 			}
 		},
-/*		created() {
-			fsClient.getUser().then(function(user) {
-				this.username = user.username;
-			}).catch(function(error) {
-				console.log(error);
-			});
-		}, */
 		methods: {
 			login() {
-				fsUtils.login();
+				this.$store.dispatch('login');
 			},
 			logout() {
-				fsUtils.logout();
+				this.$store.dispatch('logout');
 			},
 		},
 	};

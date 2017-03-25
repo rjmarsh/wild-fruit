@@ -51,6 +51,17 @@ const actions = {
 		});
 
 	},
+	// Function is called when the user clicks the "Sign In" button.
+	login() {
+		// Redirect the user to the FamilySearch OAuth page
+		fsClient.get().oauthRedirect();
+		// we don't return here
+	},
+	logout({ commit }) {
+		// clear cookie here
+		fsClient.get().deleteAccessToken();
+		commit('clearLoginCredentials');
+	},
 };
 
 export default {
