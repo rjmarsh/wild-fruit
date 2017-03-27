@@ -18,6 +18,7 @@
     "build:server": "cross-env NODE_ENV=production webpack --config ./build/webpack.server.conf.js --progress --profile --colors"
   },
   "dependencies": {
+    "async-es": "^2.2.0",
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.13.3",
     "fs-js-lite": "^2.1.0",

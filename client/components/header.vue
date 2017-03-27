@@ -99,6 +99,10 @@
 		margin-left: auto;
 	}
 
+	.FamilySearch_show_log:hover {
+		text-decoration: underline;
+	}
+
 	.no_right_margin {
 		margin-left: auto;
 	}

@@ -1,5 +1,5 @@
-import {fsClient} from './../../familysearch/fsclient';
-import {cookiesUtil} from './../../familysearch/cookies';
+import {fsClient} from '../backend-apis/familysearch/fsclient';
+import {cookiesUtil} from '../backend-apis/familysearch/cookies';
 
 const state = {
 	username: '',	// to be displayed in the header.vue
