@@ -1,4 +1,5 @@
-import fsClient from './../../familysearch/fsclient';
+import {fsClient} from './../../familysearch/fsclient';
+import {cookiesUtil} from './../../familysearch/cookies';
 
 const state = {
 	username: '',	// to be displayed in the header.vue
@@ -25,23 +26,29 @@ const mutations = {
 const actions = {
 	checkFamilySearchLoginStatus ({ commit }) {
 
+		console.log(cookiesUtil);
+		debugger;
+
 		// 1. See if the user just logged in (i.e., the current URL has a 'code' parameter returned from oauth2 login
 		//
 		// Note: It is safe to call oauthResponse even if a login hasn't occurred because oauthResponse does nothing if the URL does not contain a 'code' parameter
-		fsClient.get().oauthResponse(function(error, response){
+		fsClient.oauthResponse(function(error, response){
 			if(response){
 				if(response.statusCode === 200){
 
 					const accessToken = response.data.access_token;
 
-					fsClient.get().get('/platform/users/current', function(error, response){
+					fsClient.get('/platform/users/current', function(error, response){
 						if(error){
 							console.error(error);
 						} else {
 							commit('setLoginCredentials', {
-								accessToken: 	accessToken,
 								username: 		response.data.users[0].contactName,
+								accessToken: 	accessToken,
 							});
+							cookiesUtil.setItem('username', response.data.users[0].contactName, 24*60*60);
+							cookiesUtil.setItem('accessToken', accessToken, 24*60*60);
+							window.location = window.location.pathname;
 						}
 					});
 				}
@@ -50,17 +57,25 @@ const actions = {
 			}
 		});
 
+		// 2. See if username and accessToken are stored in a cookie
+		if (cookiesUtil.getItem('username')) {
+			commit('setLoginCredentials', {
+				username: 		cookiesUtil.getItem('username'),
+				accessToken: 	cookiesUtil.getItem('accessToken'),
+			});
+		}
 	},
 	// Function is called when the user clicks the "Sign In" button.
 	login() {
 		// Redirect the user to the FamilySearch OAuth page
-		fsClient.get().oauthRedirect();
+		fsClient.oauthRedirect();
 		// we don't return here
 	},
 	logout({ commit }) {
-		// clear cookie here
-		fsClient.get().deleteAccessToken();
+		fsClient.deleteAccessToken();
 		commit('clearLoginCredentials');
+		cookiesUtil.removeItem('username',);
+		cookiesUtil.removeItem('accessToken');
 	},
 };
 
