@@ -21,7 +21,6 @@
 		border-top: solid 1px rgba(255, 255, 255, .2);
 		font-size: 14px;
 		box-sizing: border-box;
-		width: 1000px;
 	}
 
 	img {

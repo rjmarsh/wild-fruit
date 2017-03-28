@@ -18,18 +18,21 @@
 
 	.nav_container {
 		display: flex;
+		flex-direction: column;
 		background-color: #d1d7b3;
-		height: 45px;
-		justify-content: space-around;
-		margin-top: 40px;
-		margin-bottom: 40px;
-		margin-left:auto;
-		margin-right:auto;
-		width: 80%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: 20px;
+		margin-right: 20px;
+		border-style: solid;
+		border-width: thick;
+		border-color: #5A6100;
 	}
 
 	.nav_link {
-		align-self: center;
+		flex: 0 0 45px;
+		text-align: center;
+		justify-content: center;
 	}
 
 	a {

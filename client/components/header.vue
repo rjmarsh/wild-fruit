@@ -55,8 +55,6 @@
 		display: flex;
 		background-color: #5A6100;
 		color: #ffffff;
-		line-height: 2.25em;
-		width: 100%;
 	}
 
 	.wild_fruit_logo {
