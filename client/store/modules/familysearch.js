@@ -1,5 +1,6 @@
 import {fsClient} from '../backend-apis/familysearch/fsclient';
 import {cookiesUtil} from '../backend-apis/familysearch/cookies';
+import {findPossibleDuplicates} from '../backend-apis/familysearch/fs-duplicates';
 
 const state = {
 	username: '',	// to be displayed in the header.vue
@@ -25,9 +26,6 @@ const mutations = {
 
 const actions = {
 	checkFamilySearchLoginStatus ({ commit }) {
-
-		console.log(cookiesUtil);
-		debugger;
 
 		// 1. See if the user just logged in (i.e., the current URL has a 'code' parameter returned from oauth2 login
 		//
@@ -63,6 +61,7 @@ const actions = {
 				username: 		cookiesUtil.getItem('username'),
 				accessToken: 	cookiesUtil.getItem('accessToken'),
 			});
+			findPossibleDuplicates('L5DH-RCK', 'Ancestors', 4, false, 10);
 		}
 	},
 	// Function is called when the user clicks the "Sign In" button.

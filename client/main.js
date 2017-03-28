@@ -3,9 +3,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import store from './store/store';
 import App from './app';
-import Current from './views/current';
-import Create from './views/create';
-import Manage from './views/manage';
+import Main from './views/main';
 import Learn from './views/learn';
 
 Vue.use(VueRouter);
@@ -25,15 +23,7 @@ const routes = [
 		children: [
 			{
 				path: '/',
-				component: Current,
-			},
-			{
-				path: '/create-workflow',
-				component: Create,
-			},
-			{
-				path: '/manage-workflows',
-				component: Manage,
+				component: Main,
 			},
 			{
 				path: "/learn",

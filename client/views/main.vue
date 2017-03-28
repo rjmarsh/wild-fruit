@@ -1,21 +1,19 @@
 <template>
 	<div>
-		<wf-manage></wf-manage>
+		<wf-main></wf-main>
 	</div>
 </template>
 
 <script>
-	import wfManage from '../components/manage-workflows';
+	import wfMain from '../components/main';
 
 	export default {
-		name: 'Manage',
+		name: 'Main',
 		data() {
 			return {};
 		},
 		components: {
-			wfManage,
+			wfMain,
 		},
 	};
 </script>
-
-

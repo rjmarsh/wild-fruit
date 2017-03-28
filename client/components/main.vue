@@ -1,19 +1,18 @@
 <template>
-	<div class="current-workflow">
+	<div class="body">
+ 		<div>Main</div>
   	</div>
 </template>
 
 <script>
-
 	export default {
-		name: 'wf-current',
+		name: 'wf-main',
 		data() {
 			return {};
 		},
 	};
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 	.body {
 		background-color: #ffffff;

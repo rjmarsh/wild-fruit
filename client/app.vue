@@ -34,23 +34,5 @@
 </script>
 
 <style>
-	html, body {
-		height: 100%;
-		width: 1000px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0;
-		font-family: adobe-clean, myriad-pro, sans-serif;
-		background-color: #373737;
-		font-size: 16px;
-		border-left: solid 1px rgba(255, 255, 255, .2);
-		border-right: solid 1px rgba(255, 255, 255, .2);
-	}
-
-	#outer_wrapper::after {
-		content: '';
-		display: block;
-		height: 75px;
-	}
 
 </style>
