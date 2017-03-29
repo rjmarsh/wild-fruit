@@ -1,8 +1,8 @@
 <template>
-	<div class="find-duplicate-form">
+	<div class="find-duplicates-form">
 		<wf-modal :show="showModal" :on-close="closeModal">
 			<span slot="content">
-				<div class="form-title">Create a New Duplicates Search</div>
+				<div class="form-title">Find Duplicates</div>
 				<div class="form-group">
 					<div class="column">
 						<label>Root Person</label>
@@ -50,7 +50,7 @@
 <script>
 	import wfModal from './modal';
 	export default {
-		name: 'wf-find-duplicate-form',
+		name: 'wf-find-duplicates-form',
 		props: ['showModalProp'],
 		data() {
 			return {
@@ -67,6 +67,7 @@
 		methods: {
 			closeModal() {
 				this.showModal = false;
+				window.location.href = '/';
 			},
 			findDuplicates() {
 				console.log('--- findDuplicates ----------------------------------');
@@ -84,7 +85,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.find-duplicate-form {
+	.find-duplicates-form {
 		display: flex;
 		background-color: #ffffff;
 		color: #999;
@@ -95,10 +96,10 @@
 		width: 100%;
 		box-sizing: border-box;
 	}
-	.find-duplicate-form * {
+	.find-duplicates-form * {
 		opacity: 1;
 	}
-	.find-duplicate-form:hover * {
+	.find-duplicates-form:hover * {
 		opacity: 1;
 	}
 	/* form specific formatting */

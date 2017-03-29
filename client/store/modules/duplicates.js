@@ -1,6 +1,13 @@
+import {findPossibleDuplicates} from '../backend-apis/familysearch/fs-duplicates';
 
 const state = {
 	duplicates: [],
+};
+
+const getters = {
+	duplicates (state) {
+		return state.duplicates;
+	}
 };
 
 const mutations = {
@@ -20,14 +27,16 @@ const mutations = {
 
 const actions = {
 	findPossibleDuplicates ({ commit }, searchSpec) {
-		possibleDuplicates = findPossibleDuplicates(searchSpec.rootPerson, searchSpec.direction, searchSpec.generations, searchSpec.includeFamily, -1);
+		const possibleDuplicates = findPossibleDuplicates(searchSpec.rootPerson, searchSpec.direction, searchSpec.generations, searchSpec.includeFamily, -1);
+		console.log(possibleDuplicates);
 	}
 
-}
+};
 
 
 export default {
 	state,
+	getters,
 	mutations,
 	actions,
 };

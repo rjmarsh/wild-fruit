@@ -1,5 +1,5 @@
-//import fsClient from './fsclient.js';
-//import FSTraversal from 'fs-traversal';
+import {fsClient} from './fsclient.js';
+import FSTraversal from 'fs-traversal';
 
 /**
  * traverse the FamilySearch tree looking for possible duplicates
@@ -8,14 +8,14 @@
  * @param {Number} generations Number of generations to search
  * @param {Boolean} includeImmediateFamilies The second number.
  * @param {Number} maxDuplicates The second number.
- * @return (Promise)
+ * @return (Number) retVal The return val.
  */
 function findPossibleDuplicates(personId, direction, generations, includeImmediateFamilies, maxDuplicates ) {
 	console.log(personId);
 	console.log(generations);
 	console.log(includeImmediateFamilies);
 	console.log(maxDuplicates);
-/*
+
 	const traversal = new FSTraversal(fsClient)
 		.order('wrd')
 		.filter('ancestry')
@@ -32,9 +32,11 @@ function findPossibleDuplicates(personId, direction, generations, includeImmedia
 			console.log('child:'+child.getDisplayName());
 			console.log('mother:'+mother.getDisplayName());
 			console.log('father:'+father.getDisplayName());
+			console.log('childRelationship:'+childRelationship);
 		})
 		.marriage(function(wife, husband, marriage){
 			console.log(wife.getDisplayName()+' married ' + husband.getDisplayName());
+			console.log('marriage: '+marriage);
 		})
 		.error(function(personId, error){
 			console.error('Something went wrong fetching person ' + personId);
@@ -47,6 +49,8 @@ function findPossibleDuplicates(personId, direction, generations, includeImmedia
 	console.log('status: ' + traversal.status());
 
 	traversal.start();
+
+	console.log('status: ' + traversal.status());
 
 	setTimeout(function(){
 		console.log('status: ' + traversal.status());
@@ -61,7 +65,8 @@ function findPossibleDuplicates(personId, direction, generations, includeImmedia
 		}, 5000);
 
 	}, 3000);
-*/
+
+	return 4;
 }
 
 /**

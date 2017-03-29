@@ -17,7 +17,7 @@
 
 <script>
 	import wfHeader from './components/header';
-	import wfNavigate from './components/navigation';
+	import wfNavigate from './components/sidebar';
 	import wfFooter from './components/footer';
 
 	export default {

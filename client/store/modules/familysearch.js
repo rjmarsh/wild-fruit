@@ -1,6 +1,5 @@
 import {fsClient} from '../backend-apis/familysearch/fsclient';
 import {cookiesUtil} from '../backend-apis/familysearch/cookies';
-import {findPossibleDuplicates} from '../backend-apis/familysearch/fs-duplicates';
 
 const state = {
 	username: '',	// to be displayed in the header.vue

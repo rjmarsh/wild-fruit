@@ -20,7 +20,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.13.3",
-    "fs-js-lite": "^2.1.0",
+    "fs-js-lite": "^2.2.0",
     "fs-traversal": "git+https://github.com/genealogysystems/fs-traversal.git",
     "gedcomx-fs-js": "^2.0.0",
     "gedcomx-js": "^2.7.0",
