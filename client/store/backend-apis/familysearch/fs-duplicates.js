@@ -7,7 +7,8 @@
  * @param {Number} direction ('Ancestors' | 'Descendants').
  * @param {Number} generations Number of generations to search
  * @param {Boolean} includeImmediateFamilies The second number.
- * @param {number} maxDuplicates The second number.
+ * @param {Number} maxDuplicates The second number.
+ * @return (Promise)
  */
 function findPossibleDuplicates(personId, direction, generations, includeImmediateFamilies, maxDuplicates ) {
 	console.log(personId);

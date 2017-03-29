@@ -1,6 +1,7 @@
 <template>
 	<div class="nav_container">
 		<div class="nav_link"><router-link to="/learn">Learn</router-link></div>
+		<div class="nav_link"><router-link to="/find-duplicates">Find Duplicates</router-link></div>
 	</div>
 </template>
 
@@ -33,17 +34,14 @@
 		flex: 0 0 45px;
 		text-align: center;
 		justify-content: center;
-	}
-
-	a {
 		color: #5a6100;
 	}
 
-	a:link {
+	.nav_link:link {
 		text-decoration: none;
 	}
 
-	a:hover {
+	.nav_link:hover {
    		text-decoration: underline;
 	}
 

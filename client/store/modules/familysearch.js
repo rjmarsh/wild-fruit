@@ -61,7 +61,6 @@ const actions = {
 				username: 		cookiesUtil.getItem('username'),
 				accessToken: 	cookiesUtil.getItem('accessToken'),
 			});
-			findPossibleDuplicates('L5DH-RCK', 'Ancestors', 4, false, 10);
 		}
 	},
 	// Function is called when the user clicks the "Sign In" button.

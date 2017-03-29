@@ -16,7 +16,18 @@ const mutations = {
 	},
 };
 
+
+
+const actions = {
+	findPossibleDuplicates ({ commit }, searchSpec) {
+		possibleDuplicates = findPossibleDuplicates(searchSpec.rootPerson, searchSpec.direction, searchSpec.generations, searchSpec.includeFamily, -1);
+	}
+
+}
+
+
 export default {
 	state,
-	mutations
+	mutations,
+	actions,
 };
