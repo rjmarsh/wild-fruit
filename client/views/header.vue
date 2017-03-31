@@ -1,26 +1,26 @@
 <template>
 	<div class="header">
-		<div class="wild_fruit_logo">
-			<img class="olive_tree" src="/static/img/olive_tree.png"/><span class="header_text">Wild Fruit</span>
-		</div>
-		<div class="wild_fruit_status">
-			<div v-if="username.length" class="FamilySearch_login">
-				<span class="no_right_margin">
-					<span class="FamilySearch_username">
+		<router-link class="wild-fruit-logo" to="/">
+			<img class="olive-tree" src="/static/img/olive_tree.png"/><span class="header-text">Wild Fruit</span>
+		</router-link>
+		<div class="wild-fruit-status">
+			<div v-if="username.length" class="FamilySearch-login">
+				<span class="no-right-margin">
+					<span class="FamilySearch-username">
 						{{username}}
 					</span>
-					<span @click="logout" class="FamilySearch_show_log">
+					<span @click="logout" class="FamilySearch-show-log">
 						logout
 					</span>
 				</span>
 			</div>
-			<div v-else class="FamilySearch_login">
-				<div @click="login" class="FamilySearch_show_log">
+			<div v-else class="FamilySearch-login">
+				<div @click="login" class="FamilySearch-show-log">
 					login
 				</div>
 			</div>
-			<div class="FamilySearch_logo">
-				<img class="fsicon" src="/static/img/icons/FamilySearch Logo/FSMosaicTreeLogo.png"/>
+			<div class="FamilySearch-logo">
+				<img class="fsicon" src="/static/img/icons/FamilySearch%20Logo/FSMosaicTreeLogo.png"/>
 			</div>
 		</div>
 	</div>
@@ -57,8 +57,9 @@
 		color: #ffffff;
 	}
 
-	.wild_fruit_logo {
+	.wild-fruit-logo {
 		flex: 2;
+		text-decoration: none;
 	}
 
 	img {
@@ -67,29 +68,35 @@
 		padding-right: 1px;
 	}
 
-	.header_text {
+	.header-text {
 		margin-left:20px;
-		font-size: 30px;
+		font-size: 30.5px;
 		font-family: "Georgia";
+		color: #ffffff;
+		text-decoration: none;
 	}
 
-	.wild_fruit_status {
+	.header-text:hover {
+		color: #d1d7b3;
+	}
+
+	.wild-fruit-status {
 		flex: 3;
 	}
 
-	.FamilySearch_login {
+	.FamilySearch-login {
 		display: flex;
 		height: 50%;
 	}
 
-	.FamilySearch_username {
+	.FamilySearch-username {
 		font-size: 14px;
 		color: #ffffff;
 		font-family: "Georgia";
 		margin-left: auto;
 	}
 
-	.FamilySearch_show_log {
+	.FamilySearch-show-log {
 		font-size: 14px;
 		color: #ffffff;
 		font-family: "Georgia";
@@ -97,15 +104,15 @@
 		margin-left: auto;
 	}
 
-	.FamilySearch_show_log:hover {
+	.FamilySearch-show-log:hover {
 		text-decoration: underline;
 	}
 
-	.no_right_margin {
+	.no-right-margin {
 		margin-left: auto;
 	}
 
-	.FamilySearch_logo {
+	.FamilySearch-logo {
 		display: flex;
 		height: 50%;
 	}

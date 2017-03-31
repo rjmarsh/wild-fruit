@@ -4,8 +4,6 @@ import Vuex from 'vuex';
 import store from './store/store';
 import App from './app';
 import Main from './views/main';
-import Learn from './views/learn';
-import FindPossibleDuplicates from './views/find';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -28,11 +26,11 @@ const routes = [
 			},
 			{
 				path: "/learn",
-				component: Learn,
+				component: Main,
 			},
 			{
 				path: "/find-duplicates",
-				component: FindPossibleDuplicates,
+				component: Main,
 			},
 		],
 	},

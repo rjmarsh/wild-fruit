@@ -1,12 +1,12 @@
 <template>
 	<div class="body">
- 		<div>Main</div>
+ 		<div>Home</div>
   	</div>
 </template>
 
 <script>
 	export default {
-		name: 'wf-main',
+		name: 'wf-home',
 		data() {
 			return {};
 		},

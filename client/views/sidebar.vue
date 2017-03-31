@@ -1,12 +1,15 @@
 <template>
-	<div class="nav_container">
-		<router-link class="nav_link" to="/learn">Learn</router-link>
-		<router-link class="nav_link" to="/find-duplicates">Find Duplicates</router-link>
+	<div class="sidebar-container">
+		<router-link class="sidebar-link" to="/">Home</router-link>
+		<router-link class="sidebar-link" to="/learn">Learn</router-link>
+		<router-link class="sidebar-link" to="/find-duplicates">Find Duplicates</router-link>
 		<div v-if="duplicatesExist">
-			<p class="possible_duplicates">Possible Duplicates</p>
-			<ul class="possible_duplicates_list" id="possible-duplicates-list">
-				<li class="possible_duplicates_list_item" v-for="duplicate in duplicates">
-					{{duplicate.personId}} {{duplicate.personName}}
+			<p class="title">Possible Duplicates</p>
+			<ul>
+				<li v-for="duplicate in duplicates">
+					<span class="duplicate">
+						{{duplicate.personId}} {{duplicate.personName}}
+					</span>
 				</li>
 			</ul>
 		</div>
@@ -15,11 +18,9 @@
 
 <script>
 	export default {
-		name: 'wf-navigate',
+		name: 'wf-sidebar',
 		data() {
-			return {
-				dogs: ['beagle', 'poodle'],
-			};
+			return {};
 		},
 		computed: {
 			duplicatesExist: function () {
@@ -35,7 +36,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-	.nav_container {
+	.sidebar-container {
 		display: flex;
 		flex-direction: column;
 		background-color: #d1d7b3;
@@ -48,7 +49,7 @@
 		border-color: #5A6100;
 	}
 
-	.nav_link {
+	.sidebar-link {
 		flex: 0 0 45px;
 		text-align: center;
 		justify-content: center;
@@ -56,40 +57,46 @@
 		text-decoration: none;
 	}
 
-	.nav_link:link {
+	.sidebar-link:link {
 		text-decoration: none;
 	}
 
-	.nav_link:visited {
+	.sidebar-link:visited {
 		text-decoration: none;
 	}
 
-	.nav_link:hover {
+	.sidebar-link:hover {
    		text-decoration: underline;
 	}
 
-	.nav_link:active {
+	.sidebar-link:active {
 		text-decoration: none;
 	}
 
-	.possible_duplicates {
+	.title {
 		flex: 0 0 45px;
 		text-align: center;
-		justify-content: center;
 		color: #5a6100;
 		text-decoration: none;
 	}
 
-	.possible_duplicates_list {
+	ul{
 		list-style-type: none;
+		padding: 12px;
+		font-size: small;
 	}
 
-	.possible_duplicates_list_item {
-		flex: 0 0 45px;
-		text-align: center;
-		justify-content: center;
+	li {
+		text-align: left;
+	}
+
+	.duplicate {
 		color: #5a6100;
 		text-decoration: none;
+	}
+
+	.duplicate:hover {
+		text-decoration: underline;
 	}
 
 </style>

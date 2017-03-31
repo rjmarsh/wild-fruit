@@ -4,10 +4,10 @@
 		<span class="row2">
 			<div class="row2-columns">
 				<div class="row2-column1">
-					<wf-navigate class="navigate"></wf-navigate>
+					<wf-sidebar></wf-sidebar>
 				</div>
 				<div class="row2-column2">
-					<router-view></router-view>
+					<wf-main></wf-main>
 				</div>
 			</div>
 		</span>
@@ -16,9 +16,10 @@
 </template>
 
 <script>
-	import wfHeader from './components/header';
-	import wfNavigate from './components/sidebar';
-	import wfFooter from './components/footer';
+	import wfHeader from './views/header';
+	import wfSidebar from './views/sidebar';
+	import wfMain from './views/main';
+	import wfFooter from './views/footer';
 
 	export default {
 		name: 'app',
@@ -28,7 +29,8 @@
 		},
 		components: {
 			wfHeader,
-			wfNavigate,
+			wfSidebar,
+			wfMain,
 			wfFooter,
 		},
 		created: function() {
