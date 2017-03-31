@@ -4,9 +4,9 @@
 		<router-link class="nav_link" to="/find-duplicates">Find Duplicates</router-link>
 		<div v-if="duplicatesExist">
 			<p class="possible_duplicates">Possible Duplicates</p>
-			<ul id="possible-duplicates-list">
-				<li v-for="duplicate in dogs">
-					{{duplicate}}
+			<ul class="possible_duplicates_list" id="possible-duplicates-list">
+				<li class="possible_duplicates_list_item" v-for="duplicate in duplicates">
+					{{duplicate.personId}} {{duplicate.personName}}
 				</li>
 			</ul>
 		</div>
@@ -24,6 +24,9 @@
 		computed: {
 			duplicatesExist: function () {
 				return this.$store.state.duplicates.duplicates.length > 0;
+			},
+			duplicates: function () {
+				return this.$store.state.duplicates.duplicates;
 			}
 		}
 	};
@@ -70,6 +73,18 @@
 	}
 
 	.possible_duplicates {
+		flex: 0 0 45px;
+		text-align: center;
+		justify-content: center;
+		color: #5a6100;
+		text-decoration: none;
+	}
+
+	.possible_duplicates_list {
+		list-style-type: none;
+	}
+
+	.possible_duplicates_list_item {
 		flex: 0 0 45px;
 		text-align: center;
 		justify-content: center;

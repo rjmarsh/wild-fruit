@@ -67,17 +67,27 @@
 		methods: {
 			closeModal() {
 				this.showModal = false;
-				window.location.href = '/';
 			},
 			findDuplicates() {
-				console.log('--- findDuplicates ----------------------------------');
+/*				console.log('--- findDuplicates ----------------------------------');
 				console.log(this.$store);
 				this.$store.dispatch('findPossibleDuplicates', {
 					rootPerson: this.rootPerson,
 					direction: this.direction,
 					generations: this.generations,
 					includeFamily: this.includeFamily,
-				});
+				}); */
+				this.$store.commit('addDuplicate', {personId: 'L5DH-RCK',  personName: 'Elbert Donnelly', direction: 'Ancestry', generations: 1, includeFamily: true});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-76S',  personName: 'Latara Moonbeam', direction: 'Ancestry', generations: 2, includeFamily: false});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QT5',  personName: 'Fluffy Donnelly', direction: 'Ancestry', generations: 3, includeFamily: true});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QHR',  personName: 'Cebus Donnelly', direction: 'Ancestry', generations: 4, includeFamily: false});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QTQ',  personName: 'Terri Lynn Littlefield', direction: 'Ancestry', generations: 5, includeFamily: false});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QTG',  personName: 'Spencer Littlefield', direction: 'Ancestry', generations: 6, includeFamily: true});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QCX',  personName: 'Melba Toast', direction: 'Ancestry', generations: 7, includeFamily: false});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QC4',  personName: 'Ralphus Donnelly', direction: 'Ancestry', generations: 8, includeFamily: true});
+				this.$store.commit('addDuplicate', {personId: 'L5DN-QTL',  personName: 'Digger Phelps', direction: 'Ancestry', generations: 9, includeFamily: false});
+				this.$store.commit('addDuplicate', {personId: 'L5DC-H73',  personName: 'Splendora Fritella', direction: 'Ancestry', generations: 10, includeFamily: true});
+				this.closeModal();
 			}
 		},
 	};
