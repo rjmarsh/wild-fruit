@@ -15,14 +15,14 @@ const errHandler = (err, req, res, next) => { // eslint-disable-line no-unused-v
 };
 
 server
-	.use(bodyParser.urlencoded({ extended: true }))
-	.use(bodyParser.json())
-	// static assets
-	.use('/', express.static('./static'))
-	.use('/static', express.static('./static'))
-	.use(errHandler);
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
+  // static assets
+  .use('/', express.static('./static'))
+  .use('/static', express.static('./static'))
+  .use(errHandler);
 
 server.listen(port, function () {
-	/* eslint-disable no-console */
-	console.log(`The server is running at http://localhost:${port}/`);
+  /* eslint-disable no-console */
+  console.log(`The server is running at http://localhost:${port}/`);
 });

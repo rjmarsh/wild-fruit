@@ -1,16 +1,16 @@
 <template>
-	<div class="body">
- 		<div>Home</div>
-  	</div>
+  <div class="body">
+     <div>Home</div>
+    </div>
 </template>
 
 <script>
-	export default {
-		name: 'wf-home',
-		data() {
-			return {};
-		},
-	};
+  export default {
+    name: 'wf-home',
+    data() {
+      return {};
+    },
+  };
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
-import {fsClient} from './fsclient.js';
 import FSTraversal from 'fs-traversal';
+import { fsClient } from './fsclient';
 
 /**
  * traverse the FamilySearch tree looking for possible duplicates
@@ -10,88 +10,84 @@ import FSTraversal from 'fs-traversal';
  * @param {Number} maxDuplicates The second number.
  * @return (Number) retVal The return val.
  */
-function findPossibleDuplicates(personId, direction, generations, includeImmediateFamilies, maxDuplicates ) {
-	console.log(personId);
-	console.log(generations);
-	console.log(includeImmediateFamilies);
-	console.log(maxDuplicates);
+export default function findPossibleDuplicates(
+  personId, direction, generations, includeImmediateFamilies, maxDuplicates) {
+  console.log(personId);
+  console.log(generations);
+  console.log(includeImmediateFamilies);
+  console.log(maxDuplicates);
 
-	const traversal = new FSTraversal(fsClient)
-		.order('wrd')
-		.filter('ancestry')
-		.concurrency(10)
-		.limit(30)
-		.person(function(person) {
-			console.log('visited ' + person.getDisplayName());
-			console.log('relationship: ' + traversal.relationshipTo(person.id));
-		})
-		.parent(function(parent, child){
-			console.log(child.getDisplayName() + ' is the child of ' + parent.getDisplayName());
-		})
-		.child(function(child, mother, father, childRelationship){
-			console.log('child:'+child.getDisplayName());
-			console.log('mother:'+mother.getDisplayName());
-			console.log('father:'+father.getDisplayName());
-			console.log('childRelationship:'+childRelationship);
-		})
-		.marriage(function(wife, husband, marriage){
-			console.log(wife.getDisplayName()+' married ' + husband.getDisplayName());
-			console.log('marriage: '+marriage);
-		})
-		.error(function(personId, error){
-			console.error('Something went wrong fetching person ' + personId);
-			console.error(error);
-		})
-		.done(function(){
-			console.log('Traversal Complete!');
-		});
+  const traversal = new FSTraversal(fsClient)
+    .order('wrd')
+    .filter('ancestry')
+    .concurrency(10)
+    .limit(30)
+    .person((person) => {
+      console.log(`visited ${person.getDisplayName()}`);
+      console.log(`relationship: ${traversal.relationshipTo(person.id)}`);
+    })
+    .parent((parent, child) => {
+      console.log(`${child.getDisplayName()} is the child of ${parent.getDisplayName()}`);
+    })
+    .child((child, mother, father, childRelationship) => {
+      console.log(`child:${child.getDisplayName()}`);
+      console.log(`mother:${mother.getDisplayName()}`);
+      console.log(`father:${father.getDisplayName()}`);
+      console.log(`childRelationship:${childRelationship}`);
+    })
+    .marriage((wife, husband, marriage) => {
+      console.log(`${wife.getDisplayName()} married ${husband.getDisplayName()}`);
+      console.log(`marriage: ${marriage}`);
+    })
+    .error((person, error) => {
+      console.error(`Something went wrong fetching person ${person}`);
+      console.error(error);
+    })
+    .done(() => {
+      console.log('Traversal Complete!');
+    });
 
-	console.log('status: ' + traversal.status());
+  console.log(`status: ${traversal.status()}`);
 
-	traversal.start();
+  traversal.start();
 
-	console.log('status: ' + traversal.status());
+  console.log(`status: ${traversal.status()}`);
 
-	setTimeout(function(){
-		console.log('status: ' + traversal.status());
-		console.log('pausing traversal');
-		traversal.pause();
+  setTimeout(() => {
+    console.log(`status: ${traversal.status()}`);
+    console.log('pausing traversal');
+    traversal.pause();
 
-		setTimeout(function(){
-			console.log('status: ' + traversal.status());
-			console.log('resuming traversal');
-			traversal.resume();
+    setTimeout(() => {
+      console.log(`status: ${traversal.status()}`);
+      console.log('resuming traversal');
+      traversal.resume();
+    }, 5000);
+  }, 3000);
 
-		}, 5000);
-
-	}, 3000);
-
-	return 4;
+  return 4;
 }
 
 /**
  * Add two numbers.
  * @returns {number} The sum of the two numbers.
 function traverseAncestors( ) {
-	// https://familysearch.org/developers/docs/api/tree/Descendancy_resource
-	console.log('traverseAncestors');
-	return 4;
+  // https://familysearch.org/developers/docs/api/tree/Descendancy_resource
+  console.log('traverseAncestors');
+  return 4;
 
 }
  */
-
 
 
 /**
  * Add two numbers.
  * @returns {number} The sum of the two numbers.
 function traverseDescendants( ) {
-	// https://familysearch.org/developers/docs/api/tree/Descendancy_resource
-	console.log('traverseDescendants');
-	return 4;
+  // https://familysearch.org/developers/docs/api/tree/Descendancy_resource
+  console.log('traverseDescendants');
+  return 4;
 
 }
  */
 
-
-export {findPossibleDuplicates};

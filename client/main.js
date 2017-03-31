@@ -9,44 +9,44 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 store.subscribe((mutation, state) => {
-	console.log('--- state change ---------------------------------');
-	console.log(state);
-	console.log(mutation.type)
-	console.log(mutation.payload)
-})
+  console.log('--- state change ---------------------------------');
+  console.log(state);
+  console.log(mutation.type);
+  console.log(mutation.payload);
+});
 
 const routes = [
-	{
-		path: '/',
-		component: App,
-		children: [
-			{
-				path: '/',
-				component: Main,
-			},
-			{
-				path: "/learn",
-				component: Main,
-			},
-			{
-				path: "/find-duplicates",
-				component: Main,
-			},
-		],
-	},
+  {
+    path: '/',
+    component: App,
+    children: [
+      {
+        path: '/',
+        component: Main,
+      },
+      {
+        path: '/learn',
+        component: Main,
+      },
+      {
+        path: '/find-duplicates',
+        component: Main,
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
-	mode: 'history',
-	routes,
+  mode: 'history',
+  routes,
 });
 
 /* eslint-disable no-new */
 new Vue({
-	el: '#app',
-	store,
-	router,
-	data() {
-		return {};
-	},
+  el: '#app',
+  store,
+  router,
+  data() {
+    return {};
+  },
 });
