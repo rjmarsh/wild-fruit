@@ -29,6 +29,8 @@ const cookiesUtil = {
         case Date:
           sExpires = `; expires=${vEnd.toUTCString()}`;
           break;
+        default:
+          break;
       }
     }
     document.cookie = `${encodeURIComponent(sKey)}=${encodeURIComponent(sValue)}${sExpires}${sDomain ? `; domain=${sDomain}` : ''}${sPath ? `; path=${sPath}` : ''}${bSecure ? '; secure' : ''}`;

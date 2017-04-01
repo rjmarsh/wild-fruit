@@ -49,6 +49,7 @@
 
 <script>
   import wfModal from '../../components/modal';
+
   export default {
     name: 'wf-find-duplicates-form',
     props: ['showModalProp'],
