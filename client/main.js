@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import store from './store/store';
 import App from './app';
 import Main from './views/main';
+import ProcessDuplicates from './views/subviews/process-duplicates';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -31,6 +32,10 @@ const routes = [
       {
         path: '/find-duplicates',
         component: Main,
+      },
+      {
+        path: '/process-duplicates/:personId',
+        component: ProcessDuplicates,
       },
     ],
   },

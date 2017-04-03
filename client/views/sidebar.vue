@@ -8,7 +8,7 @@
       <ul>
         <li v-for="duplicate in duplicates">
           <span class="duplicate">
-            {{duplicate.personId}} {{duplicate.personName}}
+            <router-link class="sidebar-link" :to="`/process-duplicates/${duplicate.personId}`">{{duplicate.personId}} {{duplicate.personName}}</router-link>
           </span>
         </li>
       </ul>
